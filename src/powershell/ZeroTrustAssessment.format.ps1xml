@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-16"?>
 <Configuration>
     <ViewDefinitions>
-        <!-- ZeroTrustAssessment.Test -->
+        <!-- ZeroTrustAssessment.ExportStatistics -->
         <View>
-            <Name>ZeroTrustAssessment.Test</Name>
+            <Name>ZeroTrustAssessment.ExportStatistics</Name>
             <ViewSelectedBy>
-                <TypeName>ZeroTrustAssessment.Test</TypeName>
+                <TypeName>ZeroTrustAssessment.ExportStatistics</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <AutoSize/>
@@ -13,32 +13,65 @@
                     <TableColumnHeader/>
                     <TableColumnHeader/>
                     <TableColumnHeader/>
-                    <TableColumnHeader>
-                        <Label>Cost</Label>
-                    </TableColumnHeader>
-                    <TableColumnHeader/>
                     <TableColumnHeader/>
                 </TableHeaders>
                 <TableRowEntries>
                     <TableRowEntry>
                         <TableColumnItems>
                             <TableColumnItem>
-                                <PropertyName>TestId</PropertyName>
+                                <PropertyName>Name</PropertyName>
                             </TableColumnItem>
                             <TableColumnItem>
-                                <PropertyName>Pillar</PropertyName>
+                                <PropertyName>Duration</PropertyName>
                             </TableColumnItem>
                             <TableColumnItem>
-                                <PropertyName>RiskLevel</PropertyName>
+                                <PropertyName>Success</PropertyName>
                             </TableColumnItem>
                             <TableColumnItem>
-                                <PropertyName>ImplementationCost</PropertyName>
+                                <PropertyName>Error</PropertyName>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+
+        <!-- ZeroTrustAssessment.TestStatistics -->
+        <View>
+            <Name>ZeroTrustAssessment.TestStatistics</Name>
+            <ViewSelectedBy>
+                <TypeName>ZeroTrustAssessment.TestStatistics</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <AutoSize/>
+                <TableHeaders>
+                    <TableColumnHeader/>
+                    <TableColumnHeader/>
+                    <TableColumnHeader/>
+                    <TableColumnHeader/>
+                    <TableColumnHeader>
+                        <Label>Error</Label>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>TestID</PropertyName>
                             </TableColumnItem>
                             <TableColumnItem>
-                                <PropertyName>UserImpact</PropertyName>
+                                <PropertyName>Start</PropertyName>
                             </TableColumnItem>
                             <TableColumnItem>
-                                <PropertyName>Title</PropertyName>
+                                <PropertyName>Duration</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>Success</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <ScriptBlock>
+ $_.Error.Exception.Message
+                                </ScriptBlock>
                             </TableColumnItem>
                         </TableColumnItems>
                     </TableRowEntry>
@@ -58,7 +91,9 @@
                     <TableColumnHeader/>
                     <TableColumnHeader/>
                     <TableColumnHeader/>
-                    <TableColumnHeader/>
+                    <TableColumnHeader>
+                        <Label>Cost</Label>
+                    </TableColumnHeader>
                     <TableColumnHeader/>
                     <TableColumnHeader/>
                 </TableHeaders>

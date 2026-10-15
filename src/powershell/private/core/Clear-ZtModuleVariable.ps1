@@ -14,9 +14,14 @@ function Clear-ZtModuleVariable {
     [CmdletBinding()]
     param()
 
-    $script:__ZtSession.GraphCache = @{}
+    $script:__ZtSession.GraphCache.Value.Clear()
+    $script:__ZtSession.AzureCache.Value.Clear()
     $script:__ZtSession.GraphBaseUri = $null
-    $script:__ZtSession.TestResultDetail = @{}
-    $script:__ZtSession.TenantInfo = @{}
+    $script:__ZtSession.TestResultDetail.Value.Clear()
+    $script:__ZtSession.TestStatistics.Value.Clear()
+    $script:__ZtSession.TenantInfo.Value.Clear()
+    $script:__ZtSession.ProgressState.Value.Clear()
     $script:__ZtSession.SignInLogDuration = $null
+    $script:__ZtSession.PreviewEnabled = $false
+    $script:__ZtSession.RequestedPillar = $null
 }

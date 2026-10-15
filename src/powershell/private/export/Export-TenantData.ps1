@@ -70,11 +70,11 @@ function Export-TenantData {
 
 		Export-GraphEntity -ExportPath $ExportPath -EntityName 'Application' `
 			-EntityUri 'beta/applications' -ProgressActivity 'Applications' `
-			-QueryString '$expand=owners&$top=999' -ShowCount
+			-QueryString '$top=999' -ShowCount
 
 		Export-GraphEntity -ExportPath $ExportPath -EntityName 'ServicePrincipal' `
 			-EntityUri 'beta/servicePrincipals' -ProgressActivity 'Service Principals' `
-			-QueryString '$expand=appRoleAssignments&$top=999' -RelatedPropertyNames @('oauth2PermissionGrants') `
+			-QueryString '$expand=appRoleAssignments&$top=999' -RelatedPropertyNames @('oauth2PermissionGrants', 'owners') `
 			-ShowCount
 
 		if ((Get-MgContext).Environment -eq 'Global') {
@@ -137,5 +137,9 @@ function Export-TenantData {
 		Export-GraphEntity -ExportPath $ExportPath -EntityName 'Device' `
 			-EntityUri 'beta/devices' -ProgressActivity 'Devices' `
 			-QueryString '$top=999' -ShowCount
+
+		Export-GraphEntity -ExportPath $ExportPath -EntityName 'ConfigurationPolicy' `
+			-EntityUri 'beta/deviceManagement/configurationPolicies' -ProgressActivity 'Configuration Policies' `
+			-QueryString '$expand=assignments,settings' # Note: $count not supported on this endpoint
 	}
 }
